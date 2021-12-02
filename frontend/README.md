@@ -3,7 +3,7 @@
 Ez a github könyvtár a szakdolgozatomhoz elkészített webes vállalatirányítási rendszer kódját tartalmazza. Kiinduló
 témának a Marterial Dashboard Angular sablont használtam, melyről egy angol leírást is csatoltam ebben a dokumentumban. 
 
-# [Material Dashboard Angular - Free Bootstrap Material Design Admin]
+# Material Dashboard Angular - Free Bootstrap Material Design Admin
 
 **[Material Dashboard Angular](https://www.creative-tim.com/product/material-dashboard-angular2/)** is a free Material Bootstrap Admin with a fresh, new design inspired by Google's Material Design. We are very excited to introduce our take on the material concepts through an easy to use and beautiful set of components. Material Dashboard was built over the popular Bootstrap framework and it comes with a couple of third-party plugins redesigned to fit in with the rest of the elements.
 
