@@ -51,13 +51,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-### What's included
-
-Within the download you'll find the following directories and files:
-
-```
-material-dashboard-angular
-
 ## Browser Support
 
 At present, we officially aim to support the last two versions of the following browsers:
