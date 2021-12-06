@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Bill } from 'app/model/bill';
+import { BillService } from 'app/service/bill.service';
+import { ConfigService, ITableFields } from 'app/service/config.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bill-list',
@@ -7,8 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillListComponent implements OnInit {
 
-  constructor() { }
+  tableFields: ITableFields[] = this.config.billFields;
+  list$: Observable<Bill[]> = this.billService.getAll();
 
+  constructor(
+    private config: ConfigService,
+    private billService: BillService
+  ) { }
+  
   ngOnInit(): void {
   }
 

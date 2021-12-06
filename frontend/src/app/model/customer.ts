@@ -1,7 +1,6 @@
 import { Order } from "./order";
 
 export class Customer {
-
     _id: string = "";
     first_name: string = "";
     last_name: string = "";

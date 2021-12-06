@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Saller } from 'app/model/saller';
+import { AuthentService } from 'app/service/authent.service';
+import { Auth } from 'googleapis';
+import { BehaviorSubject } from 'rxjs';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -31,7 +35,11 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() { }
+  saller$: BehaviorSubject<Saller | null> = this.authService.currentUserSubject$
+
+  constructor(
+    private authService: AuthentService
+  ) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);

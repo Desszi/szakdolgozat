@@ -28,6 +28,7 @@ import { TransportListComponent } from './transport-list/transport-list.componen
 import { StorageListComponent } from './storage-list/storage-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { BillListComponent } from './bill-list/bill-list.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { BillListComponent } from './bill-list/bill-list.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    LoginComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'app/model/order';
+import { ConfigService, ITableFields } from 'app/service/config.service';
+import { OrderService } from 'app/service/order.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-order-list',
@@ -7,7 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderListComponent implements OnInit {
 
-  constructor() { }
+  tableFields: ITableFields[] = this.config.orderFields;
+  list$: Observable<Order[]> = this.orderService.getAll();
+
+  constructor(
+    private config: ConfigService,
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
   }

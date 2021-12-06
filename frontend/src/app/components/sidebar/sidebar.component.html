@@ -6,7 +6,7 @@
         ERP rendszer
     </a>
 </div>
-<div class="sidebar-wrapper">
+<div *ngIf="(saller$ | async)" class="sidebar-wrapper">
   <div *ngIf="isMobileMenu()">
     <form class="navbar-form">
       <span class="bmd-form-group">
