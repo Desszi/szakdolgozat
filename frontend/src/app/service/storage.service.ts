@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from 'app/model/storage';
 import { Config } from 'protractor';
 import { BaseService } from './base.service';
 import { ConfigService } from './config.service';

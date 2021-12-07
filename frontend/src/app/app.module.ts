@@ -29,11 +29,22 @@ import { StorageListComponent } from './storage-list/storage-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { BillListComponent } from './bill-list/bill-list.component';
 import { LoginComponent } from './login/login.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import { SallerEditComponent } from './saller-edit/saller-edit.component';
+import { StorageEditComponent } from './storage-edit/storage-edit.component';
+import { TransportEditComponent } from './transport-edit/transport-edit.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
+import { BillEditComponent } from './bill-edit/bill-edit.component';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { OrderEditComponent } from './order-edit/order-edit.component';
+import { SortPipe } from './pipes/sort.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
@@ -47,8 +58,16 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    CustomerEditComponent,
+    SallerEditComponent,
+    StorageEditComponent,
+    TransportEditComponent,
+    ProductEditComponent,
+    OrderEditComponent,
+    SortPipe,
+    SearchPipe
   ],
-  providers: [],
+  providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

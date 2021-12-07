@@ -20,7 +20,7 @@
                 </div>
             </form>
         
-            <ul *ngIf="(saller$ | async)" class="navbar-nav dropdown">
+            <ul *ngIf="!(saller$ | async)" class="navbar-nav dropdown">
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" 
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -34,8 +34,8 @@
                       </div>
                 </li>
             </ul>
-            <button *ngIf="!(saller$ | async)" class="btn btn-success" routerLink="/login">
-                <i class="fas fa-sign-in-alt"></i>
+            <button *ngIf="(saller$ | async)" class="btn btn-success" routerLink="/login">
+                Bejelentkezés
             </button>
         </div>
     </div>

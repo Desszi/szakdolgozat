@@ -25,6 +25,7 @@ import { BillListComponent } from 'app/bill-list/bill-list.component';
 import { TransportListComponent } from 'app/transport-list/transport-list.component';
 import { OrderListComponent } from 'app/order-list/order-list.component'; 
 import { StorageListComponent } from 'app/storage-list/storage-list.component';
+import { BillEditComponent } from 'app/bill-edit/bill-edit.component';
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import { StorageListComponent } from 'app/storage-list/storage-list.component';
     StorageListComponent,
     OrderListComponent,
     BillListComponent,
+    BillEditComponent
   ]
 })
 

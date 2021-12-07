@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from 'app/model/storage';
 import { ConfigService, ITableFields } from 'app/service/config.service';
 import { StorageService } from 'app/service/storage.service';
 import { Observable } from 'rxjs';
