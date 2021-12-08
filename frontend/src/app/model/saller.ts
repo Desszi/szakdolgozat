@@ -2,11 +2,11 @@
 export class Saller {
 
     _id: string = "";
-    first_name: string = "";
-    last_name: string = "";
+    first_name?: string = "";
+    last_name?: string = "";
     birthDate?: Date = new Date();
     birthPlace?: string ="";
-    email: string = "";
+    email?: string = "";
     address?: string = "";
     phone?: string =""; 
     active?: boolean = true;

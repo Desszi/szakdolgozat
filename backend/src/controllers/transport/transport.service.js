@@ -1,14 +1,14 @@
-const Person = require('../../models/person.model');
+const Transport = require('../../models/transport.model');
 
-exports.create = personData => {
-    const person = new Person(personData);
-    return person.save();
+exports.create = transportData => {
+    const transport = new transport(transportData);
+    return transport.save();
 };
 
-exports.findAll = () => Person.find().populate('posts');
+exports.findAll = () => Transport.find().populate('saller', 'product');
 
-exports.findOne = id => Person.findById(id).populate('posts');
+exports.findOne = id => Transport.findById(id).populate('saller', 'product');
 
-exports.update = (id, updateData) => Person.findByIdAndUpdate(id, updateData, {new: true});
+exports.update = (id, updateData) => Transport.findByIdAndUpdate(id, updateData, {new: true});
 
-exports.delete = id => Person.findByIdAndRemove(id);
+exports.delete = id => Transport.findByIdAndRemove(id);

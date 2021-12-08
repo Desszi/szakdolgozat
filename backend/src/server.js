@@ -32,12 +32,17 @@ app.use(morgan('combined', {stream: logger.stream}));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-// Router.
 app.post('/login', authHandler.login);
 app.post('/refresh', authHandler.refresh);
 app.post('/logout', authHandler.logout);
 
 app.use('/bill', authenticateJwt, require('./controllers/bill/bill.routes'));
+app.use('/customer', authenticateJwt, require('./controllers/customer/customer.routes'));
+app.use('/order', authenticateJwt, require('./controllers/order/order.routes'));
+app.use('/product', authenticateJwt, require('./controllers/product/product.routes'));
+app.use('/saller', authenticateJwt, require('./controllers/saller/saller.routes'));
+app.use('/storage', authenticateJwt, require('./controllers/storage/storage.routes'));
+app.use('/transport', authenticateJwt, require('./controllers/transport/transport.routes'));
 app.use('/post', authenticateJwt, adminOnly, require('./controllers/post/post.routes'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

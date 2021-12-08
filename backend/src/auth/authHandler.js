@@ -1,47 +1,43 @@
 const jwt = require('jsonwebtoken');
 
-const Users = [
+const Sallers = [
     {
-        username: 'admin',
-        password: 'admin_pw',
-        role: 'admin'
-    },
-    {
-        username: 'user',
-        password: 'user_pw',
-        role: 'user'
+        sallerName: 'porkolab',
+        password: 'porkolab_pw',
+        role: 'saller'
     }
 ];
 
 const refreshTokens = [];
 
 module.exports.login = (req, res) => {
-    const { username, password } = req.body;
+    const { sallerName, password } = req.body;
 
-    const user = Users.find(
-        u => u.username === username && u.password === password
+    const saller = Sallers.find(
+        saller => saller.sallerName === sallerName && saller.password === password
     );
 
-    if (user) {
+    if (saller) {
         const accessToken = jwt.sign({
-            username: user.username,
-            role: user.role
+            sallerName: saller.sallerName,
+            role: saller.role
         }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: process.env.TOKEN_EXPIRY
         });
 
         const refreshToken = jwt.sign({
-            username: user.username,
-            role: user.role
+            sallerName: saller.sallerName,
+            role: saller.role
         }, process.env.REFRESH_TOKEN_SECRET);
         refreshTokens.push(refreshToken);
 
         res.json({
             accessToken,
-            refreshToken
+            refreshToken,
+            saller
         });
     } else {
-        res.send('Username or password incorrect.');
+        res.send('Name of saller or password incorrect.');
     }
 
 };
@@ -59,14 +55,14 @@ module.exports.refresh = (req, res, next) => {
         return res.sendStatus(403);
     }
 
-    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err, saller) => {
         if (err) {
             return res.sendStatus(403);
         }
 
         const accessToken = jwt.sign({
-            username: user.username,
-            role: user.role
+            sallerName: saller.sallerName,
+            role: saller.role
         }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: process.env.TOKEN_EXPIRY
         });
