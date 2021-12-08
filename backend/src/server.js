@@ -37,7 +37,7 @@ app.post('/login', authHandler.login);
 app.post('/refresh', authHandler.refresh);
 app.post('/logout', authHandler.logout);
 
-app.use('/person', authenticateJwt, require('./controllers/person/person.routes'));
+app.use('/bill', authenticateJwt, require('./controllers/bill/bill.routes'));
 app.use('/post', authenticateJwt, adminOnly, require('./controllers/post/post.routes'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

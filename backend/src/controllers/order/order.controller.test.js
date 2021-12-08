@@ -2,7 +2,7 @@ const { mockRequest, mockResponse } = require('jest-mock-req-res');
 const createError = require('http-errors');
 
 const personController = require('./person.controller');
-const personService = require('./person.service');
+const personService = require('./order.service');
 
 jest.mock('./person.service');
 
