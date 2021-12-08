@@ -1,14 +1,14 @@
-const Person = require('../../models/person.model');
+const Product = require('../../models/product.model');
 
-exports.create = personData => {
-    const person = new Person(personData);
-    return person.save();
+exports.create = productData => {
+    const product = new Product(productData);
+    return product.save();
 };
 
-exports.findAll = () => Person.find().populate('posts');
+exports.findAll = () => Product.find();
 
-exports.findOne = id => Person.findById(id).populate('posts');
+exports.findOne = id => Product.findById(id);
 
-exports.update = (id, updateData) => Person.findByIdAndUpdate(id, updateData, {new: true});
+exports.update = (id, updateData) => Product.findByIdAndUpdate(id, updateData, {new: true});
 
-exports.delete = id => Person.findByIdAndRemove(id);
+exports.delete = id => Product.findByIdAndRemove(id);

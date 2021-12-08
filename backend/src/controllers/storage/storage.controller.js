@@ -1,24 +1,17 @@
 const express = require('express');
 const createError = require('http-errors');
 
-const transportService = require('./transport.service');
+const storageService = require('./storage.service');
 
 exports.create = (req, res, next) => {
-    const { travelBy, destination, saller, products } = req.body;
-    if (!destination) {
+    const { name, address, opened, products } = req.body;
+    if (!name || !address || !opened) {
         return next(
             new createError.BadRequest("Missing properties!")
         );
     }
 
-    const newTransport = {
-        travelBy: travelBy || '',
-        destination: destination,
-        saller: saller || null,
-        products: products || []
-    };
-
-    return transportService.create(newTransport)
+    return storageService.create(newStorage)
         .then(cp => {
             res.status(201);
             res.json(cp);
@@ -27,34 +20,34 @@ exports.create = (req, res, next) => {
 };
 
 exports.findAll = (req, res, next) => {
-    return transportService.findAll()
-        .then( transports => {
-            res.json(transports);
+    return storageService.findAll()
+        .then( storages => {
+            res.json(storages);
         });
 };
 
 exports.findOne = (req, res, next) => {
-    return transportService.findOne(req.params.id)
-        .then( transport => {
-            if (!transport) {
-                return next(new createError.NotFound("Transport is not found"));
+    return storageService.findOne(req.params.id)
+        .then( storage => {
+            if (!storage) {
+                return next(new createError.NotFound("storage is not found"));
             }
-            return res.json(transport);
+            return res.json(storage);
         });
 };
 
 exports.update = (req, res, next) => {
     const id = req.params.id;
-    const { travelBy, destination, saller, products } = req.body;
-    if (!destination) {
+    const { name, address, opened, products } = req.body;
+    if (!name || !address || !opened) {
         return next(
             new createError.BadRequest("Missing properties!")
         );
     }
 
-    return transportService.update(req.params.id, req.body)
-        .then(transport => {
-            res.json(transport);
+    return storageService.update(req.params.id, req.body)
+        .then(storage => {
+            res.json(storage);
         })
         .catch( err => {
             next(new createError.InternalServerError(err.message));
@@ -62,7 +55,7 @@ exports.update = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    return transportService.delete(req.params.id)
+    return storageService.delete(req.params.id)
         .then( () => res.json({}) )
         .catch( err => {
             next(new createError.InternalServerError(err.message));

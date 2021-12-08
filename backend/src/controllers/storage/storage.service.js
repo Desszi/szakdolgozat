@@ -1,14 +1,14 @@
-const Person = require('../../models/person.model');
+const Storage = require('../../models/storage.model');
 
-exports.create = personData => {
-    const person = new Person(personData);
-    return person.save();
+exports.create = storageData => {
+    const storage = new Storage(storageData);
+    return storage.save();
 };
 
-exports.findAll = () => Person.find().populate('posts');
+exports.findAll = () => Storage.find();
 
-exports.findOne = id => Person.findById(id).populate('posts');
+exports.findOne = id => Storage.findById(id);
 
-exports.update = (id, updateData) => Person.findByIdAndUpdate(id, updateData, {new: true});
+exports.update = (id, updateData) => Storage.findByIdAndUpdate(id, updateData, {new: true});
 
-exports.delete = id => Person.findByIdAndRemove(id);
+exports.delete = id => Storage.findByIdAndRemove(id);

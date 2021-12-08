@@ -1,24 +1,24 @@
 const express = require('express');
 const createError = require('http-errors');
 
-const personService = require('./person.service');
+const productService = require('./product.service');
 
-// Create a new person.
 exports.create = (req, res, next) => {
-    const { last_name, first_name, email } = req.body;
-    if (!last_name || !first_name || !email) {
+    const { name, description, price, available } = req.body;
+    if (!name || !price || !available) {
         return next(
             new createError.BadRequest("Missing properties!")
         );
     }
 
-    const newPerson = {
-        firstName: first_name,
-        lastName: last_name,
-        email: email
+    const newProduct = {
+       name: name,
+       description: description || '',
+       price: price,
+       available: available
     };
 
-    return personService.create(newPerson)
+    return productService.create(newProduct)
         .then(cp => {
             res.status(201);
             res.json(cp);
@@ -27,39 +27,34 @@ exports.create = (req, res, next) => {
 };
 
 exports.findAll = (req, res, next) => {
-    return personService.findAll()
-        .then( people => {
-            res.json(people);
+    return productService.findAll()
+        .then( products => {
+            res.json(products);
         });
 };
 
 exports.findOne = (req, res, next) => {
-    return personService.findOne(req.params.id)
-        .then( person => {
-            if (!person) {
-                return next(new createError.NotFound("Person is not found"));
+    return productService.findOne(req.params.id)
+        .then( product => {
+            if (!product) {
+                return next(new createError.NotFound("Product is not found"));
             }
-            return res.json(person);
+            return res.json(product);
         });
 };
 
 exports.update = (req, res, next) => {
     const id = req.params.id;
-    const { first_name, last_name, email } = req.body;
-    if (!last_name || !first_name || !email) {
+    const { name, description, price, available } = req.body;
+    if (!name || !price || !available) {
         return next(
             new createError.BadRequest("Missing properties!")
         );
     }
 
-    const update = {
-        firstName: first_name,
-        lastName: last_name,
-        email: email
-    };
-    return personService.update(req.params.id, update)
-        .then(person => {
-            res.json(person);
+    return productService.update(req.params.id, req.body)
+        .then(product => {
+            res.json(product);
         })
         .catch( err => {
             next(new createError.InternalServerError(err.message));
@@ -67,7 +62,7 @@ exports.update = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    return personService.delete(req.params.id)
+    return productService.delete(req.params.id)
         .then( () => res.json({}) )
         .catch( err => {
             next(new createError.InternalServerError(err.message));
