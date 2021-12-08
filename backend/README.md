@@ -1,4 +1,4 @@
-# nodejs-api-fejlesztes
+# szakdolgozat backend része, a node-js-api
 
 ## Prerequisites
 * Node.js - Download and Install [Node.js](http://www.nodejs.org/download/).
