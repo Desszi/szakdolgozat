@@ -10,7 +10,6 @@ export class Customer {
     address?: string = "";
     phone?: string =""; 
     active?: boolean = true;
-    orders?: Order[] = [];
     password?: string='';
     accessToken?: string ='';
 }

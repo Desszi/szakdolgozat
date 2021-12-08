@@ -8,5 +8,5 @@ export class Transport {
     destination: string ="" ; 
     saller?: Saller = new Saller();
     products?: Product[] = [];
-    startStorage?: Storage = new Storage();
 }
+
